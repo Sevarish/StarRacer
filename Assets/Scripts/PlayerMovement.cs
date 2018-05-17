@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
-    Transform myT;
+    public Transform myT;
     public int speedUp = 4;
     public int speedHor = 7;
     int maxHorRight = 9;
@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour {
 	void Update () {
         resetPoint.x = myT.position.x;
         resetPoint.y = 10;
-        resetPoint.z = 0;
+        resetPoint.z = myT.position.z;
 
         resetRotation.x = 0;
         resetRotation.y = 0;
@@ -37,13 +37,21 @@ public class PlayerMovement : MonoBehaviour {
             transform.Translate(x * Time.deltaTime * -speedHor, 0, 0);
         }
 
-
-
         transform.Translate(0, speedUp * Time.deltaTime, 0);
 
-        if (myT.position.y >= 180)
+
+
+        if (myT.position.y >= 160)
         {
             myT.SetPositionAndRotation(resetPoint, resetRotation);
+            speedUp++;
+
+            if (GameObject.Find("Player").GetComponent<UI>().distanceCount < 3)
+            GameObject.Find("Player").GetComponent<UI>().multValue += 3000;
+            else
+            {
+            GameObject.Find("Player").GetComponent<UI>().multValue += 12000;
+            }
         }
     }
 }

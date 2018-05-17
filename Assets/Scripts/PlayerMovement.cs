@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
     public Transform myT;
-    public int speedUp = 4;
+    public float speedUp = 4;
     public int speedHor = 7;
     int maxHorRight = 9;
     int maxHorLeft = -9;
@@ -36,22 +36,32 @@ public class PlayerMovement : MonoBehaviour {
         {
             transform.Translate(x * Time.deltaTime * -speedHor, 0, 0);
         }
+        if (GameObject.Find("Player").GetComponent<UI>().kmUp < GameObject.Find("Player").GetComponent<UI>().distanceFromArray[6])
+        {
+            transform.Translate(0, speedUp * Time.deltaTime, 0);
+        }
+        else
+        {
 
-        transform.Translate(0, speedUp * Time.deltaTime, 0);
+        }
 
 
 
         if (myT.position.y >= 160)
         {
             myT.SetPositionAndRotation(resetPoint, resetRotation);
-            speedUp++;
+            speedUp += 0.2f;
 
             if (GameObject.Find("Player").GetComponent<UI>().distanceCount < 3)
-            GameObject.Find("Player").GetComponent<UI>().multValue += 3000;
+            {
+                GameObject.Find("Player").GetComponent<UI>().multValue += 14000;
+            }
             else
             {
-            GameObject.Find("Player").GetComponent<UI>().multValue += 12000;
+                GameObject.Find("Player").GetComponent<UI>().multValue += 1500000;
             }
+            
+            
         }
     }
 }

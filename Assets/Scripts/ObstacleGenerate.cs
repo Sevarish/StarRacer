@@ -6,11 +6,10 @@ public class ObstacleGenerate : MonoBehaviour {
     public GameObject obstacleBlock;
     Vector3 spawnZone;
     Quaternion spawnRot;
-    float posY = 30;
-    public GameObject _instance;
+    float posY = 20;
 	// Use this for initialization
 	void Start () {
-        SpawnObstacles(30);
+        SpawnObstacles(20);
 	}
 	
 	// Update is called once per frame
@@ -31,10 +30,10 @@ public class ObstacleGenerate : MonoBehaviour {
 
 
             //Spawn XYZ pos
-            spawnZone.x = Random.Range(-8f, 8f);
+            spawnZone.x = Random.Range(-6f, 6f);
             spawnZone.y = posY;
             spawnZone.z = -3.42f;
-            _instance = Instantiate(obstacleBlock, spawnZone, spawnRot);
+            Instantiate(obstacleBlock, spawnZone, spawnRot);
         }
     }
 }

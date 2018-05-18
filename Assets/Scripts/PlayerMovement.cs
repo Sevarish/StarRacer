@@ -8,8 +8,10 @@ public class PlayerMovement : MonoBehaviour {
     public int speedHor = 7;
     int maxHorRight = 9;
     int maxHorLeft = -9;
-    Vector3 resetPoint;
-    Quaternion resetRotation;
+    int yPosition = 0;
+    public Vector3 resetPoint;
+    public Quaternion resetRotation;
+    public bool maxHeightReached = false;
     // Use this for initialization
     void Start () {
         myT = transform;
@@ -26,7 +28,9 @@ public class PlayerMovement : MonoBehaviour {
         resetRotation.z = 0;
 
         float x = Input.GetAxisRaw("Horizontal");
-        
+        Debug.Log(x);
+        float y = Input.GetAxisRaw("Vertical");
+
         if (myT.position.x <= maxHorRight && x < 0)
         {
             transform.Translate(x * Time.deltaTime * -speedHor, 0, 0);
@@ -36,32 +40,45 @@ public class PlayerMovement : MonoBehaviour {
         {
             transform.Translate(x * Time.deltaTime * -speedHor, 0, 0);
         }
-        if (GameObject.Find("Player").GetComponent<UI>().kmUp < GameObject.Find("Player").GetComponent<UI>().distanceFromArray[6])
+
+        if (y > 0 && yPosition <= 60)
         {
-            transform.Translate(0, speedUp * Time.deltaTime, 0);
+            float actualY = y / 10; 
+            yPosition++;
+            transform.Translate(0 ,actualY, 0);
         }
-        else
+
+        if (y < 0 && yPosition >= -60)
         {
-
+            float actualY = y / 10;
+            yPosition--;
+            transform.Translate(0, actualY, 0);
         }
 
+        transform.Translate(0, speedUp * Time.deltaTime, 0);
 
 
-        if (myT.position.y >= 160)
+        if (maxHeightReached == true)
         {
             myT.SetPositionAndRotation(resetPoint, resetRotation);
             speedUp += 0.2f;
 
-            if (GameObject.Find("Player").GetComponent<UI>().distanceCount < 3)
+            if (GameObject.Find("Player").GetComponent<UI>().distanceCount < 2)
             {
-                GameObject.Find("Player").GetComponent<UI>().multValue += 14000;
+                GameObject.Find("Player").GetComponent<UI>().multValue += 28000;
             }
             else
             {
                 GameObject.Find("Player").GetComponent<UI>().multValue += 1500000;
             }
-            
-            
+
+            maxHeightReached = false;
         }
+
+        if (myT.position.y >= 180)
+        {
+            maxHeightReached = true;
+        }
+
     }
 }

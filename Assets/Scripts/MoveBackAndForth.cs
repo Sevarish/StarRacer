@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MoveBackAndForth : MonoBehaviour {
     Transform myT;
-    float speed = 0.05f;
+    Quaternion myR;
+    float speed = 0.08f;
     bool moveRight = true;
     bool moveLeft = false;
 	// Use this for initialization
@@ -35,6 +36,10 @@ public class MoveBackAndForth : MonoBehaviour {
             moveRight = true;
             moveLeft = false;
         }
+        myR.z = Random.Range(-360, 360);
+        myR.x = 0;
+        myR.y = 0;
+        myT.rotation = myR;
         
 	}
 }

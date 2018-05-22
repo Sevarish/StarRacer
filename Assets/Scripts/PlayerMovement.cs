@@ -27,17 +27,23 @@ public class PlayerMovement : MonoBehaviour {
         resetRotation.y = 0;
         resetRotation.z = 0;
 
+
+
+
+
         float x = Input.GetAxisRaw("Horizontal");
         Debug.Log(x);
         float y = Input.GetAxisRaw("Vertical");
 
         if (myT.position.x <= maxHorRight && x < 0)
         {
+            
             transform.Translate(x * Time.deltaTime * -speedHor, 0, 0);
         }
 
         if (myT.position.x >= maxHorLeft && x > 0)
         {
+            
             transform.Translate(x * Time.deltaTime * -speedHor, 0, 0);
         }
 
@@ -55,12 +61,12 @@ public class PlayerMovement : MonoBehaviour {
             transform.Translate(0, actualY, 0);
         }
 
-        transform.Translate(0, speedUp * Time.deltaTime, 0);
+        
 
 
         if (maxHeightReached == true)
         {
-            myT.SetPositionAndRotation(resetPoint, resetRotation);
+            
             speedUp += 0.2f;
 
             if (GameObject.Find("Player").GetComponent<UI>().distanceCount < 2)
@@ -75,10 +81,7 @@ public class PlayerMovement : MonoBehaviour {
             maxHeightReached = false;
         }
 
-        if (myT.position.y >= 180)
-        {
-            maxHeightReached = true;
-        }
+        
 
     }
 }

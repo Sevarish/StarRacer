@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnScript : MonoBehaviour {
+public class SpawnScriptReverse : MonoBehaviour
+{
 
     public GameObject cubePrefab;
     public float spawnThreshold = 0.8f;
@@ -17,17 +18,17 @@ public class SpawnScript : MonoBehaviour {
         if (spawnTimer >= spawnThreshold)
         {
             SpawnCube();
-           
+
 
         }
 
 
     }
-   
 
-        private void SpawnCube()
+
+    private void SpawnCube()
     {
-        spawnPos.x = -30;
+        spawnPos.x = 30;
         spawnPos.y = Random.Range(30f, 160f);
         spawnPos.z = -3.47f;
         Instantiate(cubePrefab, spawnPos, Quaternion.identity);

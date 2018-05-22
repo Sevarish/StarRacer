@@ -18,6 +18,6 @@ public class PlayerManager : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Obstacle")
             Destroy(this.gameObject);
-        
+        Application.LoadLevel("StartScreen");
     }
 }

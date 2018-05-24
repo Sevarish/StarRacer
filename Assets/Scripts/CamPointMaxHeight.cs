@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CamPointMaxHeight : MonoBehaviour {
     Transform myT;
+    
 	// Use this for initialization
 	void Start () {
         myT = transform;

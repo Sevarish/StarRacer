@@ -12,14 +12,18 @@ public class StaticUpCamera : MonoBehaviour {
         resetPoint.y = 10;
         resetPoint.z = 0;
         myT = transform;
-        speed = GameObject.Find("Player").GetComponent<PlayerMovement>().speedUp;
+        
 
     }
 	
 	// Update is called once per frame
 	void Update () {
+        speed = GameObject.Find("Player").GetComponent<PlayerMovement>().speedUp;
         transform.Translate(0, speed * Time.deltaTime, 0);
+        if (GameObject.Find("Player").GetComponent<PlayerManager>().isShielded == true)
+        {
 
+        }
 
         if (GameObject.Find("Player").GetComponent<PlayerMovement>().maxHeightReached == true)
         {

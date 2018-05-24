@@ -11,7 +11,7 @@ public class AsteroidMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         myT = transform;
-        speed =  GameObject.Find("Player").GetComponent<PlayerMovement>().speedUp + 5;
+        speed =  6;
 
     }
 	
@@ -29,7 +29,7 @@ public class AsteroidMovement : MonoBehaviour {
 
             myT.Rotate(0, 0, Random.Range(-180, 180) * Time.deltaTime);
             
-            if (count > 30)
+            if (count > 20)
             {
                 doOnce = false;
             }

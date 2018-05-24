@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
     public Transform myT;
-    public float speedUp = 4;
+    public float speedUp = 5;
     public int speedHor = 7;
     int maxHorRight = 9;
     int maxHorLeft = -9;
@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        resetPoint.x = myT.position.x;
+        resetPoint.x = 0;
         resetPoint.y = 10;
         resetPoint.z = myT.position.z;
 
@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour {
 
 
         float x = Input.GetAxisRaw("Horizontal");
-        Debug.Log(x);
+
         float y = Input.GetAxisRaw("Vertical");
 
         if (myT.position.x <= maxHorRight && x < 0)
@@ -49,14 +49,14 @@ public class PlayerMovement : MonoBehaviour {
 
         if (y > 0 && yPosition <= 60)
         {
-            float actualY = y / 10; 
+            float actualY = y / 8; 
             yPosition++;
             transform.Translate(0 ,actualY, 0);
         }
 
         if (y < 0 && yPosition >= -60)
         {
-            float actualY = y / 10;
+            float actualY = y / 8;
             yPosition--;
             transform.Translate(0, actualY, 0);
         }

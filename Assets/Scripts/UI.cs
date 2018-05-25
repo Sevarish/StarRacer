@@ -8,7 +8,7 @@ public class UI : MonoBehaviour {
     public Text nearestPlanetText;
     public Text shieldText;
     public Text speedText;
-    public float kmUp = 4341400000f;
+    public float kmUp = 0f;
     public float distanceFromNearestPlanet;
     public float[] distanceFromArray = {41400000f, 78340000f, 91691000f, 628730000f, 1275000000f, 2723950000f, 4351400000f};
     public string[] planetName = { "Venus", "Mars", "Mercury", "Jupiter", "Saturn", "Uranus", "Neptune"};
@@ -27,7 +27,7 @@ public class UI : MonoBehaviour {
         string kmUpString = kmUp.ToString("n3");
         nearestPlanetText.text = "Nearest Planet: \n" + planetName[distanceCount] + "\n\nDistance Remaining: \n" +  actualDistanceFromPlanet;
         distanceUpText.text = "       Distance: \n" + kmUpString + " KM";
-        speed = GameObject.Find("Player").GetComponent<PlayerMovement>().speedUp * 300;
+        speed = GameObject.Find("Player").GetComponent<PlayerMovement>().speedUp * multValue / 130;
         speedText.text = "Speed: \n" + speed;
         if (kmUp >= distanceFromArray[distanceCount] && distanceCount < 6)
         {

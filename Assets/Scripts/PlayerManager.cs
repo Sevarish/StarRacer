@@ -8,6 +8,9 @@ public class PlayerManager : MonoBehaviour {
     bool doOnce = true;
     bool isHit = false;
     int count = 0;
+    public SpriteRenderer render;
+    public Sprite shielded;
+    public Sprite normal;
     // Use this for initialization
     void Start () {
         
@@ -17,6 +20,7 @@ public class PlayerManager : MonoBehaviour {
 	void Update () {
         if (isShielded == true)
         {
+            render.sprite = shielded;
             
             shieldTimer += Time.deltaTime;
             if (shieldTimer > 5.5f && shieldTimer < 7 && doOnce == true)
@@ -31,6 +35,12 @@ public class PlayerManager : MonoBehaviour {
                 doOnce = true;
             }
         }
+        else
+        {
+            render.sprite = normal;
+        }
+
+        
 
 
         if (isHit == true)

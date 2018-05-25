@@ -7,7 +7,7 @@ public class PowerupsSpawn : MonoBehaviour {
     Vector3 spawnPos;
     GameObject[] go;
     public bool isPickedUp = true;
-    public float pickUpTimer = 60;
+    public float pickUpTimer = 0;
 	// Use this for initialization
 	void Start () {
 
@@ -26,7 +26,7 @@ public class PowerupsSpawn : MonoBehaviour {
         {
             pickUpTimer += Time.deltaTime;
         }
-        if (go.Length < 1 && pickUpTimer > 30)
+        if (go.Length < 2 && pickUpTimer > 30)
         {
             Instantiate(shieldPowerUp, spawnPos, Quaternion.identity);
         }

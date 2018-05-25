@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour {
     // Use this for initialization
     void Start () {
         myT = transform;
+        
 	}
 	
 	// Update is called once per frame
@@ -40,8 +41,7 @@ public class PlayerMovement : MonoBehaviour {
             
             transform.Translate(x * Time.deltaTime * -speedHor, 0, 0);
         }
-
-        if (myT.position.x >= maxHorLeft && x > 0)
+        else if (myT.position.x >= maxHorLeft && x > 0)
         {
             
             transform.Translate(x * Time.deltaTime * -speedHor, 0, 0);
